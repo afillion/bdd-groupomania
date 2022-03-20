@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2022 at 06:46 PM
+-- Generation Time: Mar 20, 2022 at 09:44 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -36,6 +36,16 @@ CREATE TABLE `comments` (
   `postId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `txt`, `createdAt`, `updatedAt`, `userId`, `postId`) VALUES
+(1, 'Lorem ipsum dolor sit amet', '2022-03-20 08:43:32', '2022-03-20 08:43:32', 1, 1),
+(2, 'Lorem ipsum dolor sit amet', '2022-03-20 08:43:34', '2022-03-20 08:43:34', 1, 2),
+(3, 'Lorem ipsum dolor sit amet', '2022-03-20 08:43:36', '2022-03-20 08:43:36', 2, 1),
+(4, 'Lorem ipsum dolor sit amet', '2022-03-20 08:43:38', '2022-03-20 08:43:38', 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -45,7 +55,7 @@ CREATE TABLE `comments` (
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `title` varchar(30) NOT NULL,
-  `txt` text DEFAULT NULL,
+  `txt` text NOT NULL,
   `likes` int(11) DEFAULT NULL,
   `dislikes` int(11) DEFAULT NULL,
   `imageUrl` varchar(255) DEFAULT NULL,
@@ -59,11 +69,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `txt`, `likes`, `dislikes`, `imageUrl`, `createdAt`, `updatedAt`, `userId`) VALUES
-(1, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-17 17:25:07', '2022-03-17 17:25:07', 1),
-(2, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-17 17:25:07', '2022-03-17 17:25:07', 1),
-(3, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-17 17:25:08', '2022-03-17 17:25:08', 1),
-(4, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-17 17:25:08', '2022-03-17 17:25:08', 1),
-(5, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-17 17:25:09', '2022-03-17 17:25:09', 1);
+(1, 'titre du post modifOne', 'ModifOne Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/modif-one', '2022-03-20 08:41:47', '2022-03-20 08:43:26', 1),
+(2, 'titre du post', 'Lorem ipsum dolor sit amet', 0, 0, 'http://localhost:3000/images/', '2022-03-20 08:43:05', '2022-03-20 08:43:05', 2);
 
 -- --------------------------------------------------------
 
@@ -89,8 +96,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `pwd`, `role`, `first_name`, `last_name`, `description`, `email`, `createdAt`, `updatedAt`) VALUES
-(1, 'Link', '$2b$10$hK0ckA81v7rM2E05YUl/Yu0xUtfb4gkiXfv4eGkaIu9R8Ho/fdaB6', 'admin', 'Alexis', 'empty', 'Lorem ipsum dolor sit amet', 'test@test.com', '2022-03-17 17:15:58', '2022-03-17 17:15:58'),
-(6, 'Zelda', '$2b$10$YpyuUIHoSLytb8bpINS4t.jWGWyDjIqZ16s8OQN.44rCuJsl/u0Mm', 'admin', 'Alexis', 'empty', 'Lorem ipsum dolor sit amet', 'test2@test.com', '2022-03-17 17:26:47', '2022-03-17 17:26:47');
+(1, 'L\'élu', '$2b$10$u6PbKzY3h2SLAbW9lwS43.wAUqzJiaTeu64CpltrLr2A7ZgZeKDC6', 'admin', 'Link', 'oot', 'Lorem ipsum dolor sit amet', 'test@test.com', '2022-03-20 08:40:50', '2022-03-20 08:40:50'),
+(2, 'Princesse', '$2b$10$81Teg624peTejCd9IHbEPu.qo/cliY1in2Sp2UK3OiWLIb3KpHBce', 'admin', 'Zelda', 'oot', 'Lorem ipsum dolor sit amet', 'test2@test.com', '2022-03-20 08:41:10', '2022-03-20 08:41:10');
 
 -- --------------------------------------------------------
 
@@ -167,19 +174,19 @@ ALTER TABLE `userslikes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `usersdislikes`
